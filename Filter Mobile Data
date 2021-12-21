@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #next{
+            height: 50px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: row;
+            justify-content: space-evenly;
+            background-color: aqua;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        input{
+            font-size: 20px;
+        }
+    </style>
+    
+</head>
+<body>
+    <div id="next">
+        
+        Filter:-<input id="search" >
+        <button id="btn">Search</button>
+    </div>
+    <span id="one"></span>
+    <script>
+        var data=[{Campany:'NOKIA',Model:'Nokia XR20',Price:6999.00,img:'nokia-2_3webp.webp',Year:2021},
+        {Campany:'NOKIA',Model:'Nokia C30',Price:10999.00,img:'nokia-2_3webp.webp',Year:2021},
+        {Campany:'NOKIA',Model:'Nokia C01 Plus',Price:6199,img:'nokia-2_3webp.webp',Year:2021},
+        {Campany:'NOKIA',Model:'Nokia G10',Price:12149,img:'nokia-2_3webp.webp',Year:2021},
+        {Campany:'NOKIA',Model:'Nokia C20 Plus',Price:8999,img:'nokia-2_3webp.webp',Year:2018},
+        {Campany:'NOKIA',Model:'Nokia G20',Price:13499,img:'nokia-2_3webp.webp',Year:2029},
+        {Campany:'NOKIA',Model:'Nokia 5.4',Price:12499,img:'nokia-2_3webp.webp',Year:2016},
+        {Campany:'NOKIA',Model:'Nokia 3.4',Price:'11499',img:'nokia-2_3webp.webp',Year:2017},
+        {Campany:'NOKIA',Model:'Nokia C3',Price:'6999',img:'nokia-2_3webp.webp',Year:2021},
+        {Campany:'NOKIA',Model:'Nokia 5.3',Price:'15499',img:'nokia-2_3webp.webp',Year:2021},
+        {Campany:'NOKIA',Model:'Nokia 2.3',Price:8999,img:'nokia-2_3webp.webp',Year:2021},
+        {Campany:'Apple',Model:'Nokia 5.4',Price:12499,img:'nokia-2_3webp.webp',Year:2020},
+        {Campany:'Apple',Model:'Nokia 3.4',Price:'11499',img:'nokia-2_3webp.webp',Year:2021},
+        {Campany:'Apple',Model:'Nokia C3',Price:'6999',img:'nokia-2_3webp.webp',Year:2019},
+        {Campany:'Apple',Model:'Nokia 5.3',Price:'15499',img:'nokia-2_3webp.webp',Year:2020},
+        {Campany:'Apple',Model:'Nokia 2.3',Price:8999,img:'nokia-2_3webp.webp',Year:2021}
+        ]
+        function call(){
+        var table=`<table  width="100%" border='1'>
+        <tr>
+            <th>Campany</th>
+            <th>Image</th>
+            <th>Model No</th>
+            <th>Price</th>
+            <th>Year</th>
+        </tr>`
+
+        data.forEach(function(x){
+            table+=`<tr><td>${x.Campany}</td><td><img width='200px' height='200px' src='${x.img}'></td><td>${x.Model}</td><td>${x.Price}</td><td>${x.Year}</td></tr>`
+        })
+
+        document.getElementById("one").innerHTML=table
+        }
+
+        call()
+
+        document.getElementById('btn').onclick=function(){
+            var table=`<table  width="100%" border='1'>
+        <tr>
+            <th>Campany</th>
+            <th>Image</th>
+            <th>Model No</th>
+            <th>Price</th>
+            <th>Year</th>
+        </tr>`
+            var getvalue=document.getElementById('search').value
+            var filterdata=data.filter(function(res){
+                if(res.Campany==getvalue){
+                    return res
+                }
+                else if(parseInt(res.Price)<=parseInt(getvalue)){
+                    return res
+                }
+
+                else if(parseInt(res.Year)==getvalue){
+                    return res
+                }
+
+               
+               
+            })
+            filterdata.forEach(function(emp){
+            table+=`<tr><td>${emp.Campany}</td><td><img width='200px' height='200px' src='${emp.img}'></td><td>${emp.Model}</td><td>${emp.Price}</td><td>${emp.Year}</td></tr>`
+        })
+
+        document.getElementById("one").innerHTML=table
+            
+        }
+
+        
+    </script>
+    
+</body>
+</html>
