@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+   
+<style>
+    #showdata{
+        display: flex;
+        flex-wrap: wrap;
+        
+    }
+
+    .card{
+        background-color: deepskyblue;
+        margin: 20px;
+        width: 20%;
+        font-style: italic;
+        font-family: Arial, Helvetica, sans-serif;
+        white-space:0%;
+        word-spacing: 0%;
+        box-shadow:8px,8px,8px,8px rgba(23, 96, 145, 0.733);
+        padding: 10px;
+        border-radius:5%;
+        }
+    h4{
+        margin: 0%;
+    }
+</style>
+</head>
+<body>
+    <div id="one">
+        
+        Filter:-<input id="search" >
+        <button id="btn">Search</button>
+    </div>
+    <div class="conatiner">
+        <div id="showdata">
+
+        </div>
+    </div>
+
+    <script>
+        async function call(){
+        var response= await fetch('https://jsonplaceholder.typicode.com/comments')
+        data=await response.json()
+        console.log(data)
+        card=""
+        data.forEach(item=>{
+            card+=`<div class="card">
+                <h4>postId :- ${item.postId}</h4>
+                <h4>ID : -${item.id}</h4>
+                <h4>Name :- ${item.name}</h4>
+                <h4>Email :-${item.email}</h4>
+                <h4>Title :- ${item.body}</h4>
+                </div>`
+        })
+
+        document.getElementById('showdata').innerHTML=card
+    }
+    call()
+
+  document.getElementById('btn').onclick=function(){
+    var getvalue=document.getElementById('search').value
+    var filterdata=data.filter(function(res){
+                if(res.id==getvalue){
+                    return res
+                }
+                else if(res.postId==getvalue){
+                    return res
+                }
+
+                else if(res.email==getvalue){
+                    return res
+                }
+            })
+        card2=""
+        filterdata.forEach(item2=>{
+            card2+=`<div class="card">
+                <h4>postId :- ${item2.postId}</h4>
+                <h4>ID : -${item2.id}</h4>
+                <h4>Name :- ${item2.name}</h4>
+                <h4>Email :-${item2.email}</h4>
+                <h4>Title :- ${item2.body}</h4>
+                </div>`
+        })
+
+        document.getElementById('showdata').innerHTML=card2
+  }
+    </script>
+    
+</body>
+</html>
