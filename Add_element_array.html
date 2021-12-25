@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li id="mylist"></li>
+    </ul>
+
+    <script>
+        class ListBinding{
+            constructor(element){
+                this.createElement=element;
+                this.createlist=["welcome","super"]
+            }
+
+            static createText(text){
+                const li=document.createElement('li')
+                li.textContent=text
+                return li
+            }
+
+            update(){
+                while(this.createElement.firstChild){
+                    this.createElement.removeChild(this.createElement.firstChild)
+                }
+                    for(const text of this.createlist){
+                        this.createElement.appendChild(ListBinding.createText(text))
+                    }
+                }
+            add(text){
+                this.createlist.push(text)
+                this.update()
+            }
+            remove(index){
+                this.createlist.splice(index,1)
+                this.update()
+            }
+
+            }
+
+const mylist=document.getElementById('mylist')
+list=new ListBinding(mylist)
+        
+    </script>
+    
+</body>
+</html>
