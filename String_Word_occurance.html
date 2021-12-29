@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Word Occurance</title>
+</head>
+<body>
+    <script>
+        var string=prompt("Enter the string")
+        var letter=prompt('Enter the letter')
+        var strLen=string.length;
+        alert(strLen)
+        var counter=0
+        
+        for(var i=0;i<strLen;i++){
+            if(string[i]==letter){
+                counter++
+            }
+        }
+        document.write(`${string}=>${letter}=>${counter}`)
+    </script>
+    
+</body>
+</html>  
