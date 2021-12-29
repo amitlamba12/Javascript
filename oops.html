@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOPS</title>
+</head>
+<body>
+    <script>
+        class emp{
+            constructor(name,id,age){
+                this.name=name,
+                this.id=id,
+                this.age=age
+            }
+            getdetail(){
+                console.log(`Id : ${this.id}, Name : ${this.name}, Age : ${this.age}`)
+            }
+        }
+
+        class fulltTime extends emp{
+            constructor(name,id,age,address,city){
+                super(name,id,age)
+                this.address=address,
+                this.city=city
+            }
+            
+            getdetail2()
+            {
+                super.getdetail()
+                console.log(`Full Time Employee :-- ${this.id}, Name : ${this.name}, Age : ${this.age}, Address: ${this.address}, City : ${this.city}`)
+                // return `Id : ${this.id}, Name : ${this.name}, Age : ${this.age}, Address: ${this.address}, City : ${this.city}`
+            }
+        } 
+        class partTime extends fulltTime{
+            constructor(name,age,id,address,city,salary){
+                super(name,age,id,address,city,)
+                this.salary=salary
+            }
+            // getdetail3()
+            // {
+            //     console.log(`Part Time Employee :-- ${this.id}, Name : ${this.name}, Age : ${this.age}, Address: ${this.address}, City :${this.city}`)
+            // }
+            totalSalary(){
+                let bonus=1000
+                let totalSalary=this.salary*12+bonus
+                super.getdetail2()
+                console.log(`Part Time Employee :-- ${this.id}, Name : ${this.name}, Age : ${this.age}, Address: ${this.address}, City :${this.city}, Salary : ${this.salary} `)
+
+
+            }
+            }
+    let obj1=new emp('Amit Kumar ',123,21)
+    let obj2=new fulltTime('Amit Lamba',125,19,'Shadara','Delhi')
+    let obj3=new partTime('sachin singh',124,24,'Shadara','Delhi',12000)
+    console.log(obj3.totalSalary())
+    </script>
+    
+</body>
+</html>
