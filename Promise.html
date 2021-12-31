@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Student list</h1>
+    <ul id="students"></ul>
+    <script>
+        var complete=false
+    //     let prom=new Promise(function(resolve,reject){
+    //         if(complete){
+    //             resolve("Yes Successfully Run")
+    //         }
+    //         else{
+    //             reject("Function Has failed")
+    //         }
+    //     })
+    // let onfulfilment=(result)=>{console.log(result)}
+    // let onRejection=(result)=>{console.log(result)}
+    // prom.then(onfulfilment).catch(onRejection)
+
+    // function prom(complete){
+    //     return new Promise(function(resolve,reject){
+    //         if(complete){
+    //             resolve('Yes I m Sucessfully Run')
+    //         }
+    //         else{
+    //             reject('I m Failed')
+    //         }
+    //     })
+    // }
+    //     let onfulfilment=(result)=>{console.log(result)}
+    //     let onRejection=(result)=>{console.log(result)}
+
+    // prom(false).then(onfulfilment).catch(onRejection)
+
+    const students = [
+            {name: "harry", subject: "JavaScript"},
+            {name: "Rohan", subject: "Machine Learning"}
+        ]
+
+    function enrollStudent(student){
+        return new Promise(function(resolve,reject){
+           setTimeout(()=>{
+                students.push(student)
+                const error=false
+               if(!false){
+                   console.log('Function : Your Promise has been successfully Run')
+                   resolve('Promise Has been fulfill')
+               }
+             else{
+                   reject('Function : Your Promise has been Not Run')
+               }
+             },3000)
+        })
+    }
+
+    function getStudents(){
+            setTimeout(function() {
+                let str = "";
+                students.forEach(function(student,subject){
+                    str += `<li> ${student.name} ${student.subject}</li>
+                            `
+                });
+                document.getElementById('students').innerHTML = str;
+                console.log("Students have been fetched");
+            }, 5000);
+        }
+    // prom(false).then((result)=>{
+    //     console.log(result);
+    // }) .catch((err)=>{console.log(err)})
+    let newStudent = {name:"Amit Kumar", subject:"React JS"}
+    enrollStudent(newStudent).then(getStudents).catch((err)=>console.log(err))
+
+
+    </script>
+</body>
+</html>
